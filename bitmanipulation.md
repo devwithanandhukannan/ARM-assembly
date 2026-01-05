@@ -221,7 +221,7 @@ LSR r0, r0, #1
 
 ---
 
-## 🔥 **Practice Exercise**
+##  **Practice Exercise**
 
 Try predicting the output:
 ```assembly
@@ -239,7 +239,7 @@ ASR #2: 11111111 11111111 11111111 11111100 = -4
 
 ---
 
-## 📌 **Key Takeaways**
+## **Key Takeaways**
 
 1. **2's complement** = how computers store negative numbers
 2. **LSL** = multiply by powers of 2
