@@ -30,7 +30,7 @@ Solution: Two's Complement
 ```
 ┌─────────────────────────────────────────────┐
 │  Step 1: Write positive number in binary    │
-│  Step 2: Flip all bits (0→1, 1→0)          │
+│  Step 2: Flip all bits (0→1, 1→0)           │
 │  Step 3: Add 1                              │
 └─────────────────────────────────────────────┘
 ```
@@ -71,14 +71,14 @@ Result:    11111111 11111111 11111111 11011000  ← This is -40!
 ### Visual Summary
 ```
 ┌──────────────────────────────────────────────────────────────┐
-│                    40 → -40 Conversion                        │
+│                    40 → -40 Conversion                       │
 ├──────────────────────────────────────────────────────────────┤
 │                                                              │
-│   +40 = 00000000 00000000 00000000 00101000                 │
+│   +40 = 00000000 00000000 00000000 00101000                  │
 │          ↓ FLIP ALL BITS                                     │
 │         11111111 11111111 11111111 11010111                  │
 │          ↓ ADD 1                                             │
-│   -40 = 11111111 11111111 11111111 11011000                 │
+│   -40 = 11111111 11111111 11111111 11011000                  │
 │                                                              │
 └──────────────────────────────────────────────────────────────┘
 ```
@@ -96,8 +96,8 @@ MOV r0, #-40    @ Assembler does 2's complement automatically!
 Look at bit 31 (the leftmost bit):
 
 ┌─────────────────────────────────────────────────┐
-│  Bit 31 = 0  →  Number is POSITIVE             │
-│  Bit 31 = 1  →  Number is NEGATIVE             │
+│  Bit 31 = 0  →  Number is POSITIVE              │
+│  Bit 31 = 1  →  Number is NEGATIVE              │ 
 └─────────────────────────────────────────────────┘
 
 Examples:
@@ -118,9 +118,9 @@ bit 31
 
 ```
 ┌─────────────────────────────────────────────┐
-│  LSL = Push bits to the LEFT               │
-│  Empty spaces on RIGHT fill with 0         │
-│  Each shift = MULTIPLY by 2                │
+│  LSL = Push bits to the LEFT                │
+│  Empty spaces on RIGHT fill with 0          │
+│  Each shift = MULTIPLY by 2                 │
 └─────────────────────────────────────────────┘
 ```
 
@@ -169,8 +169,8 @@ Step 0: MOV r0, #40
 Step 1: LSL r0, r0, #1
 ┌────────────────────────────────────────────────────────────────┐
 │ 00000000 00000000 00000000 01010000 = 80                       │
-│                                   ↑                             │
-│                               new 0                             │
+│                                   ↑                            │
+│                               new 0                            │
 └────────────────────────────────────────────────────────────────┘
 
 Step 2: LSL r0, r0, #1
@@ -181,8 +181,8 @@ Step 2: LSL r0, r0, #1
 Step 3: LSL r0, r0, #1
 ┌────────────────────────────────────────────────────────────────┐
 │ 00000000 00000000 00000001 01000000 = 320                      │
-│                         ↑                                       │
-│                    bit moved here                               │
+│                         ↑                                      │
+│                    bit moved here                              │
 └────────────────────────────────────────────────────────────────┘
 ```
 
@@ -207,9 +207,9 @@ LSL #1: 10000000 00000000 00000000 00000010
 
 ```
 ┌─────────────────────────────────────────────┐
-│  LSR = Push bits to the RIGHT              │
-│  Empty spaces on LEFT fill with 0          │
-│  Each shift = DIVIDE by 2 (unsigned)       │
+│  LSR = Push bits to the RIGHT               │
+│  Empty spaces on LEFT fill with 0           │
+│  Each shift = DIVIDE by 2 (unsigned)        │
 └─────────────────────────────────────────────┘
 ```
 
@@ -293,10 +293,10 @@ Step 5: LSR r0, r0, #1  (2 ÷ 2 = 1)
 ### 📌 Important Note
 ```
 ┌────────────────────────────────────────────────────────────────┐
-│  NO ROUNDING!                                                   │
-│                                                                 │
-│  5 ÷ 2 = 2.5 → but LSR gives us 2                             │
-│                                                                 │
+│  NO ROUNDING!                                                  │
+│                                                                │
+│  5 ÷ 2 = 2.5 → but LSR gives us 2                              │
+│                                                                │
 │  The remainder (0.5) is simply thrown away!                    │
 │  This is called "truncation" or "floor division"               │
 └────────────────────────────────────────────────────────────────┘
@@ -376,14 +376,14 @@ _start:
 Step 0: MOV r0, #-40
 ┌────────────────────────────────────────────────────────────────┐
 │ 11111111 11111111 11111111 11011000 = -40                      │
-│ ↑                                                               │
+│ ↑                                                              │
 │ Sign bit = 1 (negative)                                        │
 └────────────────────────────────────────────────────────────────┘
 
 Step 1: ASR r0, r0, #1  (-40 ÷ 2 = -20)
 ┌────────────────────────────────────────────────────────────────┐
 │ 11111111 11111111 11111111 11101100 = -20                      │
-│ ↑↑                                                              │
+│ ↑↑                                                             │
 │ │└─ New 1 copied from sign bit!                                │
 │ └── Original sign bit                                          │
 └────────────────────────────────────────────────────────────────┘
@@ -391,8 +391,8 @@ Step 1: ASR r0, r0, #1  (-40 ÷ 2 = -20)
 Step 2: ASR r0, r0, #1  (-20 ÷ 2 = -10)
 ┌────────────────────────────────────────────────────────────────┐
 │ 11111111 11111111 11111111 11110110 = -10                      │
-│ ↑                                                               │
-│ Sign preserved!                                                 │
+│ ↑                                                              │
+│ Sign preserved!                                                │
 └────────────────────────────────────────────────────────────────┘
 ```
 
@@ -420,8 +420,8 @@ Step 2: ASR r0, r0, #1  (-20 ÷ 2 = -10)
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  Unsigned numbers (0 and positive only) → Use LSR     │
-│  Signed numbers (positive AND negative) → Use ASR     │
+│  Unsigned numbers (0 and positive only) → Use LSR       │
+│  Signed numbers (positive AND negative) → Use ASR       │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -434,7 +434,7 @@ Step 2: ASR r0, r0, #1  (-20 ÷ 2 = -10)
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │  ROR = Rotate Right                                         │
-│  Bits that "fall off" the RIGHT come back on the LEFT      │
+│  Bits that "fall off" the RIGHT come back on the LEFT       │
 │  NO bits are lost! (Circular movement)                      │
 └─────────────────────────────────────────────────────────────┘
 ```
@@ -470,14 +470,14 @@ _start:
 Step 0: MOV r0, #0x81
 ┌────────────────────────────────────────────────────────────────┐
 │ 00000000 00000000 00000000 10000001 = 0x00000081               │
-│                                    ↑                            │
+│                                    ↑                           │
 │                              This bit (1) will rotate          │
 └────────────────────────────────────────────────────────────────┘
 
 Step 1: ROR r0, r0, #1
 ┌────────────────────────────────────────────────────────────────┐
 │ 10000000 00000000 00000000 01000000 = 0x80000040               │
-│ ↑                                                               │
+│ ↑                                                              │
 │ The bit came back here!                                        │
 └────────────────────────────────────────────────────────────────┘
 ```
@@ -489,11 +489,11 @@ Step 1: ROR r0, r0, #1
 │                     ROR r0, r0, #4                                │
 ├───────────────────────────────────────────────────────────────────┤
 │                                                                   │
-│ Before: 00000000 00000000 00000000 11110000 = 0x000000F0         │
+│ Before: 00000000 00000000 00000000 11110000 = 0x000000F0          │
 │                                    ↑↑↑↑                           │
 │                              These 4 bits rotate                  │
 │                                                                   │
-│ After:  00000000 00000000 00000000 00001111 = 0x0000000F         │
+│ After:  00000000 00000000 00000000 00001111 = 0x0000000F          │
 │                                         ↑↑↑↑                      │
 │                                   Came back here                  │
 │                                                                   │
@@ -528,7 +528,7 @@ After ROR #1, bit 0 moves to bit 31 position!
 │  • Encryption algorithms (AES, etc.)                    │
 │  • Hash functions (SHA, MD5)                            │
 │  • Checksums                                            │
-│  • Malware obfuscation (hiding code)                   │
+│  • Malware obfuscation (hiding code)                    │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -541,8 +541,8 @@ After ROR #1, bit 0 moves to bit 31 position!
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │  RRX = Special 33-bit rotate                                │
-│  Uses the Carry flag (C) from CPSR register                │
-│  Creates a 33-bit rotation (32 bits + Carry)               │
+│  Uses the Carry flag (C) from CPSR register                 │
+│  Creates a 33-bit rotation (32 bits + Carry)                │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -553,11 +553,11 @@ After ROR #1, bit 0 moves to bit 31 position!
       └────┬────┘
            ↓
     ┌──────────────────────────────────────────────────┐
-    │ Bit31 Bit30 ... Bit2 Bit1 Bit0 │ Carry │→ Out   │
+    │ Bit31 Bit30 ... Bit2 Bit1 Bit0 │ Carry │→ Out    │
     └──────────────────────────────────────────────────┘
            ↓     ↓        ↓    ↓      ↓
-    ┌───────────────────────────────────────────��──────┐
-    │ Carry Bit31 ... Bit3 Bit2 Bit1 │ New C │← Bit0  │
+    ┌───────────────────────────────────────────��─────┐
+    │ Carry Bit31 ... Bit3 Bit2 Bit1 │ New C │← Bit0   │
     └──────────────────────────────────────────────────┘
 ```
 
@@ -566,7 +566,7 @@ After ROR #1, bit 0 moves to bit 31 position!
 Before RRX:
 ┌───────────────────────────────────────────────────────────────┐
 │  Carry = 1                                                    │
-│  R0 = 10000000 00000000 00000000 00000000                    │
+│  R0 = 10000000 00000000 00000000 00000000                     │
 │       ↑                                                       │
 │       bit 31                                                  │
 └───────────────────────────────────────────────────────────────┘
@@ -574,7 +574,7 @@ Before RRX:
 After RRX r0, r0:
 ┌───────────────────────────────────────────────────────────────┐
 │  Carry = 0 (old bit 0)                                        │
-│  R0 = 11000000 00000000 00000000 00000000                    │
+│  R0 = 11000000 00000000 00000000 00000000                     │
 │       ↑↑                                                      │
 │       │└── old bit 31                                         │
 │       └─── old Carry (was 1)                                  │
@@ -708,32 +708,32 @@ loop:
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                         LSL (Shift Left)                        │
-│  ┌───┬───┬───┬───┬───┬───┬───┬───┐                             │
-│  │ ← │ ← │ ← │ ← │ ← │ ← │ ← │ 0 │  Zero fills from right     │
-│  └───┴───┴───┴───┴───┴───┴───┴───┘                             │
+│  ┌───┬───┬───┬───┬───┬───┬───┬───┐                              │
+│  │ ← │ ← │ ← │ ← │ ← │ ← │ ← │ 0 │  Zero fills from right       │
+│  └───┴───┴───┴───┴───┴───┴───┴───┘                              │
 ├─────────────────────────────────────────────────────────────────┤
 │                         LSR (Logical Shift Right)               │
-│  ┌───┬───┬───┬───┬───┬───┬───┬───┐                             │
-│  │ 0 │ → │ → │ → │ → │ → │ → │ → │  Zero fills from left      │
-│  └───┴───┴───┴───┴───┴───┴───┴───┘                             │
+│  ┌───┬───┬───┬───┬───┬───┬───┬───┐                              │
+│  │ 0 │ → │ → │ → │ → │ → │ → │ → │  Zero fills from left        │ 
+│  └───┴───┴───┴───┴───┴───┴───┴───┘                              │
 ├─────────────────────────────────────────────────────────────────┤
 │                         ASR (Arithmetic Shift Right)            │
-│  ┌───┬───┬───┬───┬───┬───┬───┬───┐                             │
-│  │ S │ → │ → │ → │ → │ → │ → │ → │  Sign bit fills from left  │
-│  └───┴───┴───┴───┴───┴───┴───┴───┘                             │
+│  ┌───┬───┬───┬───┬───┬───┬───┬───┐                              │
+│  │ S │ → │ → │ → │ → │ → │ → │ → │  Sign bit fills from left    │
+│  └───┴───┴───┴───┴───┴───┴───┴───┘                              │
 │    ↑                                                            │
 │    S = Sign bit (copied)                                        │
 ├─────────────────────────────────────────────────────────────────┤
 │                         ROR (Rotate Right)                      │
-│  ┌───┬───┬───┬───┬───┬───┬───┬───┐                             │
-│  │ ↵ │ → │ → │ → │ → │ → │ → │ → │↴ Wraps around               │
-│  └───┴───┴───┴───┴───┴───┴───┴───┘                             │
+│  ┌───┬───┬───┬───┬───┬───┬───┬───┐                              │
+│  │ ↵ │ → │ → │ → │ → │ → │ → │ → │↴ Wraps around                │
+│  └───┴───┴───┴───┴───┴───┴───┴───┘                              │
 │    ↑_____________________________|                              │
 ├─────────────────────────────────────────────────────────────────┤
 │                         RRX (Rotate Right Extended)             │
-│  ┌───┐   ┌───┬───┬───┬───┬───┬───┬───┬───┐                     │
-│  │ C │ → │ → │ → │ → │ → │ → │ → │ → │ → │→ C (33-bit)        │
-│  └───┘   └───┴───┴───┴───┴───┴───┴───┴───┘                     │
+│  ┌───┐   ┌───┬───┬───┬───┬───┬───┬───┬───┐                      │
+│  │ C │ → │ → │ → │ → │ → │ → │ → │ → │ → │→ C (33-bit)          │
+│  └───┘   └───┴───┴───┴───┴───┴───┴───┴───┘                      │
 │    ↑                                                            │
 │    Carry flag                                                   │
 └─────────────────────────────────────────────────────────────────┘
@@ -810,12 +810,12 @@ CMP r2, #0        @ If zero, n is power of 2!
 ┌────────────────────────────────────────────────────────────────┐
 │              What You See → What It Means                      │
 ├────────────────────────────────────────────────────────────────┤
-│  LSL r0, r0, #n    →    r0 = r0 × 2^n                         │
-│  LSR r0, r0, #n    →    r0 = r0 ÷ 2^n (unsigned)              │
-│  ASR r0, r0, #n    →    r0 = r0 ÷ 2^n (signed)                │
-│  Multiple RORs     →    Probably encryption                   │
-│  RRX patterns      →    Advanced crypto or obfuscation        │
-│  LSL + LSL + ADD   →    Multiply by non-power of 2            │
+│  LSL r0, r0, #n    →    r0 = r0 × 2^n                          │
+│  LSR r0, r0, #n    →    r0 = r0 ÷ 2^n (unsigned)               │
+│  ASR r0, r0, #n    →    r0 = r0 ÷ 2^n (signed)                 │
+│  Multiple RORs     →    Probably encryption                    │ 
+│  RRX patterns      →    Advanced crypto or obfuscation         │
+│  LSL + LSL + ADD   →    Multiply by non-power of 2             │
 └────────────────────────────────────────────────────────────────┘
 ```
 
@@ -825,13 +825,13 @@ CMP r2, #0        @ If zero, n is power of 2!
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│  1. LSL = Multiply (fast × by powers of 2)                     │
-│  2. LSR = Divide unsigned (bits fall off right)                │
-│  3. ASR = Divide signed (keeps negative sign)                  │
-│  4. ROR = Rotate (no bits lost, wrap around)                   │
-│  5. RRX = Special rotate (uses Carry flag)                     │
-│  6. Two's complement = How computers do negative numbers       │
-│  7. Bit 31 = 1 means NEGATIVE                                  │
-│  8. Shifts are MUCH faster than multiply/divide instructions   │
+│  1. LSL = Multiply (fast × by powers of 2)                      │
+│  2. LSR = Divide unsigned (bits fall off right)                 │
+│  3. ASR = Divide signed (keeps negative sign)                   │
+│  4. ROR = Rotate (no bits lost, wrap around)                    │
+│  5. RRX = Special rotate (uses Carry flag)                      │
+│  6. Two's complement = How computers do negative numbers        │
+│  7. Bit 31 = 1 means NEGATIVE                                   │
+│  8. Shifts are MUCH faster than multiply/divide instructions    │
 └─────────────────────────────────────────────────────────────────┘
 ```
