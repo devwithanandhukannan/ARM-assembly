@@ -1,6 +1,6 @@
 # ARM Branching Tutorial
 
-## 📚 Table of Contents
+## Table of Contents
 ```
 ARM BRANCHING
 │
@@ -89,7 +89,7 @@ AL      Always                  Always jump (no condition)      Any
 
 # 3. CODE EXAMPLES
 
-## ⚠️ The Problem: Code Falls Through
+## The Problem: Code Falls Through
 
 ```arm
 .global _start
@@ -121,7 +121,7 @@ WHAT HAPPENS:
 
 ---
 
-## ✅ The Solution: Use Unconditional Branch
+## The Solution: Use Unconditional Branch
 
 ```arm
 .global _start
